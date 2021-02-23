@@ -19,7 +19,8 @@ class CLI
     end
 
     def greeting
-        puts "Welcome to the Cocktail Chooser!" 
+        puts "So the girl you like just asked you to make a cocktail, but you don't know how?"
+        puts "Never fear" 
         puts "----Grabbing Data----"
     end
 
@@ -27,24 +28,33 @@ class CLI
         puts "What drink are you thinkin?"
         input = nil
         input = gets.chomp
-        @drink_api = API.new("#{input}")
+        formatted_input = input.gsub(/\ /, '%')
+        @drink_api = API.new("#{formatted_input}")
         puts "got API"
         @drink_data = @drink_api.get_data
-        binding.pry
+        #binding.pry
         puts "Got data"
         # retrieve_main_alcohol
+        options
     end
 
     def options
         puts @drink_data[0]["strDrink"]
+        #binding.pry
         puts "This one sound good? (y/n)"
         input = nil
-        input = gets.chomp
-        if input == "Y" || input == "y" || input == "yes" || input "Yes"
+        ##binding.pry
+        # @counter = 0
+        input = gets.chomp    
+        # while @counter >= 0    
+        if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
             puts @drink_data[0]["strInstructions"]
-        else
+        elsif
+            input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
             puts "Let's try again!"
+            counter += 1
         end
+    end
     end
 
     # def retrieve_main_alcohol
