@@ -3,27 +3,39 @@
 class Drink
     @@all = []
 
-     attr_accessor :name, :idDrink, :strDrink, :strDrinkAlternate
+    attr_accessor :name #, :idDrink, :strDrink, :strDrinkAlternate
 
-    def initialize(drink_array)
+    def initialize(drink_hash)
         # binding.pry
 
         # drink_array[1,10].each do |key, value|
             # binding.pry
-        # drink_hash = Hash[drink_array][0..2]
+        # drink_hash = Hash[drink_array]
         # binding.pry
         # drink_hash.each do |key, value|
         #     # binding.pry
-        import_info = drink_array[0..2]
-        import_info.each do |key, value|
-        self.send("#{key}=", value)
-        #    binding.pry
+        #import_info = drink_array[0..2]
+        #import_info.each do |key, value|
+        #   binding.pry
+          drink_hash.each do |key, value|
+            # binding.pry
+        self.class.attr_accessor(key)
+        # binding.pry
+        # self.send(("#{key}="), value)
+        self.respond_to?(key == "idDrink")
+            if true
+                self.send(("#{key}="), value)
+        end
+            # binding.pry
         end
         @@all << self
     end
 
         def name
             self.strDrink
+        # if self.respond_to?(idDrink) == true
+        #     return self.idDrink
+        # end
             # binding.pry
         end
 

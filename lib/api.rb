@@ -16,7 +16,8 @@ class API
     def get_data
         response_hash = HTTParty.get(@url + @drink_name)
          #51 keys!
-        drink_array = response_hash["drinks"][0].to_a#[1,10,17]
+        #  binding.pry
+        drink_array = response_hash["drinks"]#.to_a#[1,10,17]
         #  binding.pry
         self.create_drink_objects(drink_array)
         # cocktail_name = response_hash["drinks"][0]["strDrink"]
@@ -26,10 +27,10 @@ class API
     end
 
     def create_drink_objects(drink_array)
-        # drink_array.each do |drink_hash|
+        drink_array.each do |drink_hash|
+            #binding.pry
+            Drink.new(drink_hash)
             # binding.pry
-            Drink.new(drink_array)
-            # binding.pry
-        # end
+        end
     end
 end

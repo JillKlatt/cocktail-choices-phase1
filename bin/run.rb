@@ -3,7 +3,7 @@
 
 require_relative "../config/environment.rb"
 
-CLI.new.run
+CLI.new.run("margarita")
 # test_drink = API.new("margarita")
 # marg = test_drink.get_data
 # binding.pry
