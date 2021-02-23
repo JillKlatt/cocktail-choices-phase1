@@ -1,3 +1,0 @@
-class Drink
-
-end

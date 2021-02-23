@@ -1,3 +1,0 @@
-class CLI
-
-end

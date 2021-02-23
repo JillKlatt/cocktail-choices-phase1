@@ -1,0 +1,3 @@
+module Cocktails
+
+end
