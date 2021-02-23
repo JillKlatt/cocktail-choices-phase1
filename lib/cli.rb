@@ -12,10 +12,9 @@ class CLI
     #     menu
     # end
 
-    def run(drink_name)
+    def run
+        # @drink_name = drink_name
         greeting
-        menu
-        @drink_name = drink_name
         menu
     end
 
@@ -25,10 +24,39 @@ class CLI
     end
 
     def menu
-        "What kind of alcohol will you be using?"
-        @drink_api = API.new("#{@drink_name}")
+        puts "What drink are you thinkin?"
+        input = nil
+        input = gets.chomp
+        @drink_api = API.new("#{input}")
+        puts "got API"
         @drink_data = @drink_api.get_data
+        binding.pry
+        puts "Got data"
+        # retrieve_main_alcohol
     end
+
+    def options
+        puts @drink_data[0]["strDrink"]
+        puts "This one sound good? (y/n)"
+        input = nil
+        input = gets.chomp
+        if input == "Y" || input == "y" || input == "yes" || input "Yes"
+            puts @drink_data[0]["strInstructions"]
+        else
+            puts "Let's try again!"
+        end
+    end
+
+    # def retrieve_main_alcohol
+    #     puts "What's your main alcohol?"
+    #     input = nil
+    #     while input != "exit" do
+    #         input = gets.chomp
+    #         if input == "tequila" || input == "Tequila"
+    #             puts "Whoo baby"
+    #         end
+    #     end
+    # end
 
     # def menu
     #     puts "Would you like to make one of the following cocktails?"

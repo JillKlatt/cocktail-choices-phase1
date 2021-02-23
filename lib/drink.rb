@@ -18,13 +18,15 @@ class Drink
         #import_info.each do |key, value|
         #   binding.pry
           drink_hash.each do |key, value|
-            # binding.pry
+            #binding.pry
+            if key == "strDrink" || key == "strInstructions"
+               # binding.pry
         self.class.attr_accessor(key)
-        # binding.pry
+        self.send(("#{key}="), value)
+        #binding.pry
         # self.send(("#{key}="), value)
-        self.respond_to?(key == "idDrink")
-            if true
-                self.send(("#{key}="), value)
+        # if self.respond_to?("idDrink") == true
+        #         self.send(("#{key}="), value)
         end
             # binding.pry
         end
