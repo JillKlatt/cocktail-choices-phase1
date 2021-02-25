@@ -5,7 +5,7 @@ Flatiron Phase 1 CLI Project
 
 # cocktail-choices
 Flatiron Phase 1 CLI Project
-test push 1
+
  
 ## header 2
  
@@ -15,5 +15,6 @@ test push 1
 #Contributor guide
 #Install instructions
 -"Fork and clone this repo"
+run bin/run.rb
 #Sample Video
 #Code of Conduct

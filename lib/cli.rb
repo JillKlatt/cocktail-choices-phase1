@@ -42,59 +42,58 @@ class CLI
             end
         end
 
-        def confirm_drink
-            if Drink.all.count >= 2
-                puts "Which one?"
-                input = nil
-                input = gets.chomp
-                #if the input isn't valid
-                if input.to_i 
-                    if input.to_i <= Drink.all.count
-                puts "YOU GOT THIS!"
-                puts "The main ingredient is #{Drink.all[input.to_i].strIngredient1}."
-                puts "Along with #{Drink.all[input.to_i].strIngredient2} and #{Drink.all[input.to_i].strIngredient3}."
-                #binding.pry
-                puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions}"
-                    #binding.pry
-                    Drink.all.clear
-                    else 
-                    puts "Invalid response"
-                    Drink.all.clear
-                    display_options
-                    end
-                end
-            else
-        puts "This one? (y/n)"
-        input = nil
-        ##binding.pry
-        input = gets.chomp    
-                #Bring input to downcase
-        if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
+    def confirm_drink
+        if Drink.all.count >= 2
+            puts "Which one?"
+            input = nil
+            input = gets.chomp
+            #if the input isn't valid
+            if input.to_i 
+                if input.to_i <= Drink.all.count
             puts "YOU GOT THIS!"
-            puts "The main ingredient is #{Drink.all.first.strIngredient1}."
-            puts "Along with #{Drink.all.first.strIngredient2} and #{Drink.all.first.strIngredient3}."
-            puts "Here's what you're gonna do: #{Drink.all.first.strInstructions} "
-        elsif
-            input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
-            puts "Let's try again!"
-            #menu
+            puts "The main ingredient is #{Drink.all[input.to_i].strIngredient1}."
+            puts "Along with #{Drink.all[input.to_i].strIngredient2} and #{Drink.all[input.to_i].strIngredient3}."
+                #binding.pry
+            puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions}"
+                #binding.pry
+                Drink.all.clear
+                else 
+                puts "Invalid response"
+                Drink.all.clear
+                display_options
+                end
+            end
         else
-            puts "Invalid response"
-            #confirm drink
+            puts "This one? (y/n)"
+            input = nil
+        ##binding.pry
+            input = gets.chomp    
+                #Bring input to downcase
+                if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
+                    puts "YOU GOT THIS!"
+                    puts "The main ingredient is #{Drink.all.first.strIngredient1}."
+                    puts "Along with #{Drink.all.first.strIngredient2} and #{Drink.all.first.strIngredient3}."
+                    puts "Here's what you're gonna do: #{Drink.all.first.strInstructions} "
+                else
+                input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
+                    puts "Let's try again!"
+                    #else
+                    #puts "Invalid response"
+                    #confirm drink
+                end
+            end
         end
-    end
-    end
     end
     def exit_option
         puts "You nailed it! Make another? (y/n)"
         input = nil
         input = gets.chomp
-        if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
-            menu
-        elsif input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
-            puts "Have a great night!"
-            exit
-        end
+            if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
+                menu
+            elsif input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
+                puts "Have a great night!"
+                exit
+            end
     end
 end
 
