@@ -15,17 +15,24 @@ class API
 
     def get_data
         response_hash = HTTParty.get(@url + @drink_name)
-        drink_array = response_hash["drinks"]#.to_a#[1,10,17]
+        #binding.pry
+        drink_array = response_hash["drinks"]
+        if drink_array.nil?
+            puts "Oh sorry buddy, can't help with that one"
+            exit
+        else
         #  binding.pry
         self.create_drink_objects(drink_array)
+        end
     #binding.pry
     end
 
     def create_drink_objects(drink_array)
+        #binding.pry
         drink_array.each do |drink_hash|
             #binding.pry
             Drink.new(drink_hash)
-            puts "created new drink"
+            #puts "created new drink"
             #binding.pry
         end
     end
