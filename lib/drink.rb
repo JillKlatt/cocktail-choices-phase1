@@ -6,7 +6,45 @@ class Drink
     attr_accessor :name #, :idDrink, :strDrink, :strDrinkAlternate
 
     def initialize(drink_hash)
-        # binding.pry
+       
+          drink_hash.each do |key, value|
+            #binding.pry
+            #if key.respond_to?("strDrink") || key.respond_to?("strInstructions") || key.respond_to?("strIngredient1") || key.respond_to?("strIngredient2") || key.respond_to?("strIngredient3")
+            if key == "strDrink" || key == "strInstructions" || key == "strIngredient1" || key == "strIngredient2" || key == "strIngredient3"
+               # binding.pry
+        self.class.attr_accessor(key)
+        self.send(("#{key}="), value)
+        end
+        end
+        @@all << self
+    end
+
+        def name
+            self.strDrink
+        end
+
+        def first_ingr
+            self.strIngredient1
+        end
+
+        def self.name
+            binding.pry
+            name
+        end
+
+
+    def instructions
+        self.strInstructions
+        # cocktail_instruc = response_hash["drinks"][0]["strInstructions"]
+        # puts "Instructions: #{cocktail_instruc}"
+    end
+
+    def self.all
+        @@all
+    end
+end
+
+ # binding.pry
 
         # drink_array[1,10].each do |key, value|
             # binding.pry
@@ -17,29 +55,6 @@ class Drink
         #import_info = drink_array[0..2]
         #import_info.each do |key, value|
         #   binding.pry
-          drink_hash.each do |key, value|
-            #binding.pry
-            if key == "strDrink" || key == "strInstructions"
-               # binding.pry
-        self.class.attr_accessor(key)
-        self.send(("#{key}="), value)
-        #binding.pry
-        # self.send(("#{key}="), value)
-        # if self.respond_to?("idDrink") == true
-        #         self.send(("#{key}="), value)
-        end
-            # binding.pry
-        end
-        @@all << self
-    end
-
-        def name
-            self.strDrink
-        # if self.respond_to?(idDrink) == true
-        #     return self.idDrink
-        # end
-            # binding.pry
-        end
 
     # def name
     #     cocktail_name = response_hash["drinks"][0]["strDrink"]
@@ -58,13 +73,6 @@ class Drink
     #     self.idDrink
     # end
 
-    def instructions
-        cocktail_instruc = response_hash["drinks"][0]["strInstructions"]
-        puts "Instructions: #{cocktail_instruc}"
-    end
-
-    def self.all
-        @@all
-    end
-    #This is where data will be stored
-end
+            # self.send(("#{key}="), value)
+        # if self.respond_to?("idDrink") == true
+        #         self.send(("#{key}="), value)

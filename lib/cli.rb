@@ -22,41 +22,54 @@ class CLI
         @drink_data = @drink_api.get_data
         display_options
         confirm_drink
+        exit_option
     end
 
     def display_options
         #binding.pry
-        if @drink_data.count >= 2
-            puts "Our database contains #{@drink_data.count} #{@drink_data[0]["strDrink"]}s:"
+            if Drink.all.count >= 2
+                #binding.pry
+            puts "Our database contains #{Drink.all.count} options:" ##{Drink.name}s:"#{@drink_data[0]["strDrink"]}s:"
+            #binding.pry
         Drink.all.each.with_index(1) do |cocktail, index|
         puts "#{index}. #{cocktail.strDrink}"
         end
  
         else 
-        puts "Our database has: #{@drink_data[0]["strDrink"].upcase}"
+            #binding.pry
+            Drink.all.each do |cocktail|
+        puts "Our database has: #{cocktail.strDrink.upcase}"
+            end
         end
 
         def confirm_drink
-            if @drink_data.count >= 2
+            if Drink.all.count >= 2
                 puts "Which one?"
                 input = nil
                 input = gets.chomp
-                # input = @index
-                puts     puts "The main ingredient is #{@drink_data[input]["strIngredient1"]}."
-                puts "Here's what you're gonna do: #{@drink_data[input]["strInstructions"]} "
-                    puts "YOU GOT THIS!"
-
+                if input.to_i
+                puts "YOU GOT THIS!"
+                #binding.pry
+                Drink.all.each do |cocktail|
+                    puts "The main ingredient is #{cocktail.strIngredient1}."
+                    end
+                #puts "The main ingredient is #{@drink_data[input.to_i - 1]["strIngredient1"]}."
+                puts "Along with #{@drink_data[input.to_i - 1]["strIngredient2"]} and #{@drink_data[input.to_i - 1]["strIngredient3"]}."
+                #binding.pry
+                puts "Here's what you're gonna do: #{@drink_data[input.to_i - 1]["strInstructions"]} "
+                end
             else
         puts "This one? (y/n)"
         input = nil
         ##binding.pry
         counter = 0
         input = gets.chomp    
-        # while @counter >= 0    
+                #
         if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
+            puts "YOU GOT THIS!"
             puts "The main ingredient is #{@drink_data[0]["strIngredient1"]}."
+            puts "Along with #{@drink_data[input.to_i - 1]["strIngredient2"]} and #{@drink_data[input.to_i - 1]["strIngredient3"]}."
             puts "Here's what you're gonna do: #{@drink_data[0]["strInstructions"]} "
-                puts "YOU GOT THIS!"
         elsif
             input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
             puts "Let's try again!"
@@ -64,6 +77,17 @@ class CLI
         end
     end
     end
+    end
+    def exit_option
+        puts "You nailed it! Make another? (y/n)"
+        input = nil
+        input = gets.chomp
+        if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
+            menu
+        elsif input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
+            puts "Have a great night!"
+            exit
+        end
     end
 end
 
