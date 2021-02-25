@@ -10,17 +10,22 @@ class CLI
         puts "Never fear" 
     end
 
+    def user_input
+        @input = gets.chomp.downcase
+        if @input == "exit"
+            exit
+        end
+    end
+
     def menu
         puts "What drink do you need help with?"
-        input = nil
-        input = gets.chomp
-        formatted_input = input.gsub(/\ /, '%')
-        @drink_api = API.new("#{formatted_input}")
+        user_input
+        formatted_input = @input.gsub(/\ /, '%')
+        @drink_api = API.new("#{formatted_input}")#get_data
         #binding.pry
-        # @drink_api.get_data
-        if @drink_api.get_data == false
+        if !@drink_api.get_data
             puts "Oh sorry buddy, can't help with that one"
-            exit
+            menu
         end
         display_options
         confirm_drink
@@ -42,36 +47,29 @@ class CLI
     def confirm_drink
         if Drink.all.count >= 2
             puts "Which one?"
-            input = nil
-            input = gets.chomp
-            if input.to_i 
-                # formatted_input = input.to_i
-                if input.to_i <= Drink.all.count
+            user_input
+            if @input.to_i 
+                if @input.to_i <= Drink.all.count && @input.to_i > 0
                     puts "YOU GOT THIS!"
-                    puts "The main ingredient is #{Drink.all[input.to_i].strIngredient1}."
-                    puts "Along with #{Drink.all[input.to_i].strIngredient2} and #{Drink.all[input.to_i].strIngredient3}."
-                    puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions}"
-                    Drink.all.clear
+                    puts "The main ingredient is #{Drink.all[@input.to_i - 1].strIngredient1}."
+                    puts "Along with #{Drink.all[@input.to_i - 1].strIngredient2} and #{Drink.all[@input.to_i - 1].strIngredient3}."
+                    puts "Here's what you're gonna do: #{Drink.all[@input.to_i - 1].strInstructions}"
                 else 
                     puts "Invalid response, let's try again"
                     Drink.all.clear
                     menu
                 end
-                #Drink.all.clear
             end
         else
             puts "This one? (y/n)"
-            input = nil
-        ##binding.pry
-            input = gets.chomp    
-                #Bring input to downcase
-                if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
+            user_input   
+                if @input == "y" || @input == "yes"
                     puts "YOU GOT THIS!"
                     puts "The main ingredient is #{Drink.all.first.strIngredient1}."
                     puts "Along with #{Drink.all.first.strIngredient2} and #{Drink.all.first.strIngredient3}."
                     puts "Here's what you're gonna do: #{Drink.all.first.strInstructions} "
                 elsif
-                    input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
+                    @input == "n" || @input == "no"
                     puts "Let's try again!"
                 else
                     puts "Invalid response"
@@ -81,19 +79,25 @@ class CLI
         end
     end
     def exit_option
-        puts "You nailed it! Make another? (y/n)"
-        #Bring input to downcase
-        input = nil
-        input = gets.chomp
-            if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
-                menu
-            elsif input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
-                puts "Have a great night!"
-                exit
-            else
-                puts "Invalid response"
-                menu
-            end
+        puts "You nailed it!"
+        puts "Would you like to"
+        puts "1 View the last option"
+        puts "2 Make a new cocktail"
+        puts "3 Exit"
+        user_input
+        if @input == "1" || @input == "1 view the last option" || @input == "view the last option"
+            display_options
+            confirm_drink
+            exit_option
+        elsif @input == "2" || @input == "2 make new cocktail" || @input == "make new cocktail"
+            menu
+        elsif @input == "3" || @input == "exit"
+            puts "Have a great night!"
+            exit
+        else
+            puts "Invalid response"
+            menu
+        end
     end
 end
 

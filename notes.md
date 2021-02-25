@@ -33,9 +33,15 @@ Drinks by ingredient
 Can't decide? Random cocktail API
 
 
+
+CURRENT TO DO:
+
 X Finish changing all CLI to OO
-Remove unnecessary bindings
-Bring input to downcase
-Reconfig API to remove puts
+X Remove unnecessary bindings
+X Bring commented text to the bottom
+X Bring input to downcase
+X Reconfig API to remove puts
 Add exit options
 X If response isn't valid, need return message
+Double check formatting and indentations
+Make sure all inputs are @
