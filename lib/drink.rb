@@ -19,6 +19,17 @@ class Drink
         @@all << self
     end
 
+    def self.all
+        @@all
+    end
+
+    def self.clear
+        @@all == []
+    end
+end
+
+##GOOD TRIES:
+
     #     def name
     #         self.strDrink
     #     end
@@ -38,11 +49,6 @@ class Drink
     #     # cocktail_instruc = response_hash["drinks"][0]["strInstructions"]
     #     # puts "Instructions: #{cocktail_instruc}"
     # end
-
-    def self.all
-        @@all
-    end
-end
 
  # binding.pry
 

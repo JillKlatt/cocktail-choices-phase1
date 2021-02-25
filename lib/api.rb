@@ -10,6 +10,7 @@ class API
         # @name = cocktail_name
         @url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
         # binding.pry
+        #self.get_data
     end
 
 

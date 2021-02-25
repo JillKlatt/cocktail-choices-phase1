@@ -2,7 +2,6 @@ class CLI
 
 
     def run
-        # @drink_name = drink_name
         greeting
         menu
     end
@@ -18,9 +17,10 @@ class CLI
         input = gets.chomp
         formatted_input = input.gsub(/\ /, '%')
         @drink_api = API.new("#{formatted_input}")
+        @drink_api.get_data
         #puts "got API"
-        #@drink_data = @drink_api.get_data
         display_options
+       # binding.pry
         confirm_drink
         exit_option
     end
@@ -47,12 +47,21 @@ class CLI
                 puts "Which one?"
                 input = nil
                 input = gets.chomp
-                if input.to_i
+                #if the input isn't valid
+                if input.to_i 
+                    if input.to_i <= Drink.all.count
                 puts "YOU GOT THIS!"
                 puts "The main ingredient is #{Drink.all[input.to_i].strIngredient1}."
                 puts "Along with #{Drink.all[input.to_i].strIngredient2} and #{Drink.all[input.to_i].strIngredient3}."
                 #binding.pry
-                puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions} "
+                puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions}"
+                    #binding.pry
+                    Drink.all.clear
+                    else 
+                    puts "Invalid response"
+                    Drink.all.clear
+                    display_options
+                    end
                 end
             else
         puts "This one? (y/n)"
@@ -63,12 +72,15 @@ class CLI
         if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
             puts "YOU GOT THIS!"
             puts "The main ingredient is #{Drink.all.first.strIngredient1}."
-            puts "Along with #{@drink_data[input.to_i - 1]["strIngredient2"]} and #{@drink_data[input.to_i - 1]["strIngredient3"]}."
-            puts "Here's what you're gonna do: #{@drink_data[0]["strInstructions"]} "
+            puts "Along with #{Drink.all.first.strIngredient2} and #{Drink.all.first.strIngredient3}."
+            puts "Here's what you're gonna do: #{Drink.all.first.strInstructions} "
         elsif
             input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
             puts "Let's try again!"
             #menu
+        else
+            puts "Invalid response"
+            #confirm drink
         end
     end
     end
