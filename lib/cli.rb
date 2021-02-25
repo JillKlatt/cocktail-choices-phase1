@@ -19,7 +19,7 @@ class CLI
         formatted_input = input.gsub(/\ /, '%')
         @drink_api = API.new("#{formatted_input}")
         #puts "got API"
-        @drink_data = @drink_api.get_data
+        #@drink_data = @drink_api.get_data
         display_options
         confirm_drink
         exit_option
@@ -29,7 +29,7 @@ class CLI
         #binding.pry
             if Drink.all.count >= 2
                 #binding.pry
-            puts "Our database contains #{Drink.all.count} options:" ##{Drink.name}s:"#{@drink_data[0]["strDrink"]}s:"
+            puts "Our database contains #{Drink.all.count} options:" 
             #binding.pry
         Drink.all.each.with_index(1) do |cocktail, index|
         puts "#{index}. #{cocktail.strDrink}"
@@ -49,25 +49,20 @@ class CLI
                 input = gets.chomp
                 if input.to_i
                 puts "YOU GOT THIS!"
+                puts "The main ingredient is #{Drink.all[input.to_i].strIngredient1}."
+                puts "Along with #{Drink.all[input.to_i].strIngredient2} and #{Drink.all[input.to_i].strIngredient3}."
                 #binding.pry
-                Drink.all.each do |cocktail|
-                    puts "The main ingredient is #{cocktail.strIngredient1}."
-                    end
-                #puts "The main ingredient is #{@drink_data[input.to_i - 1]["strIngredient1"]}."
-                puts "Along with #{@drink_data[input.to_i - 1]["strIngredient2"]} and #{@drink_data[input.to_i - 1]["strIngredient3"]}."
-                #binding.pry
-                puts "Here's what you're gonna do: #{@drink_data[input.to_i - 1]["strInstructions"]} "
+                puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions} "
                 end
             else
         puts "This one? (y/n)"
         input = nil
         ##binding.pry
-        counter = 0
         input = gets.chomp    
-                #
+                #Bring input to downcase
         if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
             puts "YOU GOT THIS!"
-            puts "The main ingredient is #{@drink_data[0]["strIngredient1"]}."
+            puts "The main ingredient is #{Drink.all.first.strIngredient1}."
             puts "Along with #{@drink_data[input.to_i - 1]["strIngredient2"]} and #{@drink_data[input.to_i - 1]["strIngredient3"]}."
             puts "Here's what you're gonna do: #{@drink_data[0]["strInstructions"]} "
         elsif

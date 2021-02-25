@@ -19,25 +19,25 @@ class Drink
         @@all << self
     end
 
-        def name
-            self.strDrink
-        end
+    #     def name
+    #         self.strDrink
+    #     end
 
-        def first_ingr
-            self.strIngredient1
-        end
+    #     def first_ingr
+    #         self.strIngredient1
+    #     end
 
-        def self.name
-            binding.pry
-            name
-        end
+    #     def self.name
+    #         binding.pry
+    #         name
+    #     end
 
 
-    def instructions
-        self.strInstructions
-        # cocktail_instruc = response_hash["drinks"][0]["strInstructions"]
-        # puts "Instructions: #{cocktail_instruc}"
-    end
+    # def instructions
+    #     self.strInstructions
+    #     # cocktail_instruc = response_hash["drinks"][0]["strInstructions"]
+    #     # puts "Instructions: #{cocktail_instruc}"
+    # end
 
     def self.all
         @@all
