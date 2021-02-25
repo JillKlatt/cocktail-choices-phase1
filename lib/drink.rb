@@ -1,21 +1,16 @@
-
-
 class Drink
     @@all = []
 
-    attr_accessor :name #, :idDrink, :strDrink, :strDrinkAlternate
-
     def initialize(drink_hash)
-       
-          drink_hash.each do |key, value|
+       drink_hash.each do |key, value|
             #binding.pry
             #if key.respond_to?("strDrink") || key.respond_to?("strInstructions") || key.respond_to?("strIngredient1") || key.respond_to?("strIngredient2") || key.respond_to?("strIngredient3")
             if key == "strDrink" || key == "strInstructions" || key == "strIngredient1" || key == "strIngredient2" || key == "strIngredient3"
                # binding.pry
-        self.class.attr_accessor(key)
-        self.send(("#{key}="), value)
-        end
-        end
+            self.class.attr_accessor(key)
+            self.send(("#{key}="), value)
+                end
+            end
         @@all << self
     end
 

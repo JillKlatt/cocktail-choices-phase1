@@ -1,40 +1,24 @@
 # require_relative '../lib/modules/cocktails.rb'
 
 class API
-    # All the data is going to be grabbed here.
-    # def initialize(url)
-    #     @url = url
-    # end
     def initialize(drink_name)
         @drink_name = drink_name
-        # @name = cocktail_name
         @url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-        # binding.pry
+        #binding.pry
         #self.get_data
     end
 
 
     def get_data
         response_hash = HTTParty.get(@url + @drink_name)
-        #binding.pry
         drink_array = response_hash["drinks"]
-        if drink_array.nil?
-            puts "Oh sorry buddy, can't help with that one"
-            exit
-        else
-        #  binding.pry
+        #if drink_array.nil? return invalid -else:
         self.create_drink_objects(drink_array)
-        end
-    #binding.pry
     end
 
     def create_drink_objects(drink_array)
-        #binding.pry
         drink_array.each do |drink_hash|
-            #binding.pry
             Drink.new(drink_hash)
-            #puts "created new drink"
-            #binding.pry
         end
     end
 end

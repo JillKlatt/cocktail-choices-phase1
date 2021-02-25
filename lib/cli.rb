@@ -16,12 +16,16 @@ class CLI
         input = gets.chomp
         formatted_input = input.gsub(/\ /, '%')
         @drink_api = API.new("#{formatted_input}")
+        #binding.pry
         @drink_api.get_data
-        #puts "got API"
-        display_options
-       # binding.pry
-        confirm_drink
-        exit_option
+            if nil?
+                puts "Oh sorry buddy, can't help with that one"
+                exit
+            else
+            display_options
+            confirm_drink
+            exit_option
+        end
     end
 
     def display_options
@@ -29,7 +33,7 @@ class CLI
         puts "Our database contains #{Drink.all.count} options:" 
         Drink.all.each.with_index(1) do |cocktail, index|
             puts "#{index}. #{cocktail.strDrink}"
-                end
+            end
         else 
             Drink.all.each do |cocktail|
             puts "Our database has: #{cocktail.strDrink.upcase}"
@@ -47,15 +51,14 @@ class CLI
                     puts "YOU GOT THIS!"
                     puts "The main ingredient is #{Drink.all[input.to_i].strIngredient1}."
                     puts "Along with #{Drink.all[input.to_i].strIngredient2} and #{Drink.all[input.to_i].strIngredient3}."
-                #binding.pry
                     puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions}"
-                #binding.pry
                     Drink.all.clear
                 else 
                     puts "Invalid response"
                     Drink.all.clear
                     menu
                 end
+                #Drink.all.clear
             end
         else
             puts "This one? (y/n)"
@@ -88,6 +91,9 @@ class CLI
             elsif input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
                 puts "Have a great night!"
                 exit
+            else
+                puts "Invalid response"
+                menu
             end
     end
 end
