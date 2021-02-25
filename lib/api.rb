@@ -12,8 +12,11 @@ class API
     def get_data
         response_hash = HTTParty.get(@url + @drink_name)
         drink_array = response_hash["drinks"]
-        #if drink_array.nil? return invalid -else:
-        self.create_drink_objects(drink_array)
+        if drink_array.nil? 
+            return false
+        else
+            self.create_drink_objects(drink_array)
+        end
     end
 
     def create_drink_objects(drink_array)

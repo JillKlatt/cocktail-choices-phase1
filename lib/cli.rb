@@ -17,15 +17,14 @@ class CLI
         formatted_input = input.gsub(/\ /, '%')
         @drink_api = API.new("#{formatted_input}")
         #binding.pry
-        @drink_api.get_data
-            if nil?
-                puts "Oh sorry buddy, can't help with that one"
-                exit
-            else
-            display_options
-            confirm_drink
-            exit_option
+        # @drink_api.get_data
+        if @drink_api.get_data == false
+            puts "Oh sorry buddy, can't help with that one"
+            exit
         end
+        display_options
+        confirm_drink
+        exit_option
     end
 
     def display_options
@@ -54,7 +53,7 @@ class CLI
                     puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions}"
                     Drink.all.clear
                 else 
-                    puts "Invalid response"
+                    puts "Invalid response, let's try again"
                     Drink.all.clear
                     menu
                 end

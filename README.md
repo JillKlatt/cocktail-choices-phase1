@@ -1,20 +1,19 @@
-# cocktail-choices-phase1
-Phase 1 CLI Project
 
-Flatiron Phase 1 CLI Project
-
-# cocktail-choices
-Flatiron Phase 1 CLI Project
+Jill Klatt Flatiron Phase 1 CLI Project
+# Cocktail Pro
 
  
-## header 2
+## Remembering every cocktail recipe is impossible! 
+Luckily we have your back, we'll give you the basic components and instructions to be Cocktail PRO!
  
-### header 3
+### Install instructions:
+Fork and clone this repo.
+Run ruby bin/run
+
+### Sample demo video:
+
  
-#Short description
-#Contributor guide
-#Install instructions
--"Fork and clone this repo"
-run bin/run.rb
-#Sample Video
-#Code of Conduct
+### Contributor guide
+https://www.thecocktaildb.com/api.php
+
+### Code of Conduct

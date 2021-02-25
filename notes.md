@@ -34,7 +34,8 @@ Can't decide? Random cocktail API
 
 
 X Finish changing all CLI to OO
+Remove unnecessary bindings
 Bring input to downcase
 Reconfig API to remove puts
 Add exit options
-If response isn't valid, need return message
+X If response isn't valid, need return message
