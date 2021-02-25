@@ -4,8 +4,6 @@ class API
     def initialize(drink_name)
         @drink_name = drink_name
         @url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-        #binding.pry
-        #self.get_data
     end
 
 

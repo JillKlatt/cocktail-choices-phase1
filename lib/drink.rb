@@ -5,15 +5,9 @@ class Drink
 
     def initialize(drink_hash)
        drink_hash.each do |key, value|
-       # self.send(("#{key}="), value) if self.respond_to?("strDrink")
-            #binding.pry
-            #if key.respond_to?("strDrink") || key.respond_to?("strInstructions") || key.respond_to?("strIngredient1") || key.respond_to?("strIngredient2") || key.respond_to?("strIngredient3")
-            if key == "strDrink" || key == "strInstructions" || key == "strIngredient1" || key == "strIngredient2" || key == "strIngredient3"
-                self.class.attr_accessor(key)
-                self.send(("#{key}="), value) #if self.respond_to
-            end
-        end
-        @@all << self
+       self.send(("#{key}="), value) if self.respond_to?(key)
+       end
+       @@all << self
     end
 
     def self.all
@@ -26,6 +20,14 @@ class Drink
 end
 
 ##GOOD TRIES:
+
+            #binding.pry
+            #if key.respond_to?("strDrink") || key.respond_to?("strInstructions") || key.respond_to?("strIngredient1") || key.respond_to?("strIngredient2") || key.respond_to?("strIngredient3")
+        #     if key == "strDrink" || key == "strInstructions" || key == "strIngredient1" || key == "strIngredient2" || key == "strIngredient3"
+        #         self.class.attr_accessor(key)
+        #         self.send(("#{key}="), value) #if self.respond_to
+        #     end
+        # end
 
     #     def name
     #         self.strDrink
