@@ -1,6 +1,5 @@
 class CLI
 
-
     def run
         greeting
         menu
@@ -26,19 +25,14 @@ class CLI
     end
 
     def display_options
-        #binding.pry
-            if Drink.all.count >= 2
-                #binding.pry
-            puts "Our database contains #{Drink.all.count} options:" 
-            #binding.pry
+        if Drink.all.count >= 2
+        puts "Our database contains #{Drink.all.count} options:" 
         Drink.all.each.with_index(1) do |cocktail, index|
-        puts "#{index}. #{cocktail.strDrink}"
-        end
- 
+            puts "#{index}. #{cocktail.strDrink}"
+                end
         else 
-            #binding.pry
             Drink.all.each do |cocktail|
-        puts "Our database has: #{cocktail.strDrink.upcase}"
+            puts "Our database has: #{cocktail.strDrink.upcase}"
             end
         end
 
@@ -47,20 +41,20 @@ class CLI
             puts "Which one?"
             input = nil
             input = gets.chomp
-            #if the input isn't valid
             if input.to_i 
+                # formatted_input = input.to_i
                 if input.to_i <= Drink.all.count
-            puts "YOU GOT THIS!"
-            puts "The main ingredient is #{Drink.all[input.to_i].strIngredient1}."
-            puts "Along with #{Drink.all[input.to_i].strIngredient2} and #{Drink.all[input.to_i].strIngredient3}."
+                    puts "YOU GOT THIS!"
+                    puts "The main ingredient is #{Drink.all[input.to_i].strIngredient1}."
+                    puts "Along with #{Drink.all[input.to_i].strIngredient2} and #{Drink.all[input.to_i].strIngredient3}."
                 #binding.pry
-            puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions}"
+                    puts "Here's what you're gonna do: #{Drink.all[input.to_i].strInstructions}"
                 #binding.pry
-                Drink.all.clear
+                    Drink.all.clear
                 else 
-                puts "Invalid response"
-                Drink.all.clear
-                display_options
+                    puts "Invalid response"
+                    Drink.all.clear
+                    menu
                 end
             end
         else
@@ -74,18 +68,19 @@ class CLI
                     puts "The main ingredient is #{Drink.all.first.strIngredient1}."
                     puts "Along with #{Drink.all.first.strIngredient2} and #{Drink.all.first.strIngredient3}."
                     puts "Here's what you're gonna do: #{Drink.all.first.strInstructions} "
-                else
-                input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
+                elsif
+                    input == "N" || input == "n" || input == "no" || input == "No" || input == "NO"
                     puts "Let's try again!"
-                    #else
-                    #puts "Invalid response"
-                    #confirm drink
+                else
+                    puts "Invalid response"
+                    menu
                 end
             end
         end
     end
     def exit_option
         puts "You nailed it! Make another? (y/n)"
+        #Bring input to downcase
         input = nil
         input = gets.chomp
             if input == "Y" || input == "y" || input == "yes" || input == "Yes" || input == "YES"
