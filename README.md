@@ -9,10 +9,11 @@ Using [The Cocktail Database](https://www.thecocktaildb.com/api.php), we'll give
  
 ### Install instructions:
 Fork and clone this repo.
+Run bundle install
 Run ruby bin/run
 
 ### Sample demo video:
-To view a brief description of this program's capabilities please visit: (YOUTUBE LINK)
+To view a brief description of this program's capabilities: [click here](https://youtu.be/jFXoouM2N4o)
  
 ### Contributor guide
 Bug reports and inquiries are welcome at: https://github.com/JillKlatt/cocktail-choices-phase1

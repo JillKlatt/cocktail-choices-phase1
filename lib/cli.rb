@@ -6,7 +6,9 @@ class CLI
     end
 
     def greeting
-        puts "Welcome to Cocktail Pro!".colorize(:purple)
+        puts "- - - - - - - - - - - - ".colorize(:light_blue)
+        puts "Welcome to Cocktail Pro!".colorize(:blue)
+        puts "- - - - - - - - - - - - ".colorize(:light_blue)
         puts "Looking for a new variation on an old classic?"
         puts "Need to impress a girl but can't remember how to make her favorite drink?"
         puts "Never fear!" 
