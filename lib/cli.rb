@@ -6,8 +6,9 @@ class CLI
     end
 
     def greeting
-        puts "So the girl you like just asked you to make a cocktail," 
-        puts "but you don't know how?"
+        puts "Welcome to Cocktail Pro!".colorize(:purple)
+        puts "Looking for a new variation on an old classic?"
+        puts "Need to impress a girl but can't remember how to make her favorite drink?"
         puts "Never fear!" 
     end
 
