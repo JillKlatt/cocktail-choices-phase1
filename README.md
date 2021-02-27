@@ -13,7 +13,7 @@ Run bundle install
 Run ruby bin/run
 
 ### Sample demo video:
-To view a brief description of this program's capabilities: [click here](https://youtu.be/jFXoouM2N4o)
+A brief description of this program's capabilities is available [here](https://youtu.be/jFXoouM2N4o).
  
 ### Contributor guide
 Bug reports and inquiries are welcome at: https://github.com/JillKlatt/cocktail-choices-phase1
