@@ -1,5 +1,3 @@
-# require_relative '../lib/modules/cocktails.rb'
-
 class API
     def initialize(drink_name)
         @drink_name = drink_name

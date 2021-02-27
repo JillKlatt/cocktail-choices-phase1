@@ -17,3 +17,4 @@ Run ruby bin/run
 https://www.thecocktaildb.com/api.php
 
 ### Code of Conduct
+Located in CODE-OF-CONDUCT.md

@@ -24,9 +24,10 @@ class CLI
         @drink_api = API.new("#{formatted_input}")#get_data
         #binding.pry
         if !@drink_api.get_data
-            puts "----------------------------------------"
-            puts "Oh sorry buddy, can't help with that one"
-            puts "----------------------------------------"
+            puts "-------------------------------------------------"
+            puts       "Oh sorry buddy, can't help with that one"
+            puts "That doesn't seem to be available in our database"
+            puts "-------------------------------------------------"
             Drink.all.clear
             menu
         end
@@ -114,61 +115,3 @@ class CLI
         end
     end
 end
-
-    # def retrieve_main_alcohol
-    #     puts "What's your main alcohol?"
-    #     input = nil
-    #     while input != "exit" do
-    #         input = gets.chomp
-    #         if input == "tequila" || input == "Tequila"
-    #             puts "Whoo baby"
-    #         end
-    #     end
-    # end
-
-        #get inputs and will show strings or display
-    # def run
-    #     greeting
-    #     @marg = API.new("margarita")
-    #     @marg_data = @marg.get_data
-    #     @whisk_sour = API.new("whiskey%sour")
-    #     # binding.pry
-    #     @whisk_sour_data = @whisk_sour.get_data
-    #     @rail_split = API.new("rail%splitter")
-    #     @rail_split_data = @rail_split.get_data
-    #     menu
-    # end
-
-    # def menu
-    #     puts "Would you like to make one of the following cocktails?"
-    #     puts "1. #{@marg_data.name}"
-    #     puts "2. #{@whisk_sour_data.name}"
-    #     puts "3. #{@rail_split_data.name}"
-    # end
-
-       #binding.pry
-            # counter = 0
-            # while counter >= 0
-
-                # drink_names = @drink_data[0..-1]
-                # #binding.pry
-                # drink_list = drink_names.include?("strDrink")
-
-                # Drink.all.each do |cocktail|
-                #     puts "#{cocktail.strDrink}"
-                # end
-
-            # drink_names = @drink_data[0..-1].each do |name| 
-            #     #binding.pry
-            #     name = @drink_data[0]["strDrink"]
-            #     binding.pry
-            #     counter += 1
-            #     end
-            # end
-        # binding.pry
-
-                #binding.pry
-        #puts "Got data"
-        #count how many options
-        # retrieve_main_alcohol
-
