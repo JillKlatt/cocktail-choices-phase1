@@ -1,6 +1,6 @@
 require 'pry'
 require 'httparty'
-require 'open-uri'
+require 'colorize'
 
 require_relative '../lib/modules/cocktails.rb'
 require_relative '../lib/api.rb'

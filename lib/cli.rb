@@ -6,8 +6,9 @@ class CLI
     end
 
     def greeting
-        puts "So the girl you like just asked you to make a cocktail, but you don't know how?"
-        puts "Never fear" 
+        puts "So the girl you like just asked you to make a cocktail," 
+        puts "but you don't know how?"
+        puts "Never fear!" 
     end
 
     def user_input
@@ -21,12 +22,11 @@ class CLI
         puts "What drink do you need help with?"
         user_input
         formatted_input = @input.gsub(/\ /, '%')
-        @drink_api = API.new("#{formatted_input}")#get_data
-        #binding.pry
+        @drink_api = API.new("#{formatted_input}")
         if !@drink_api.get_data
             puts "-------------------------------------------------"
-            puts       "Oh sorry buddy, can't help with that one"
-            puts "That doesn't seem to be available in our database"
+            puts       "Oh sorry buddy, can't help with that one".colorize(:red)
+            puts "That doesn't seem to be available in our database".colorize(:red)
             puts "-------------------------------------------------"
             Drink.all.clear
             menu
@@ -46,7 +46,7 @@ class CLI
             Drink.all.each do |cocktail|
             puts "Our database has:"
             puts "~ ~ ~ ~ ~ ~ ~"
-            puts "#{cocktail.strDrink.upcase}"
+            puts "#{cocktail.strDrink.upcase}".colorize(:green)
             puts "~ ~ ~ ~ ~ ~ ~"
             end
         end
@@ -57,13 +57,13 @@ class CLI
             user_input
             if @input.to_i 
                 if @input.to_i <= Drink.all.count && @input.to_i > 0
-                    puts "YOU GOT THIS!"
+                    puts "YOU GOT THIS!".colorize(:blue)
                     puts "-------------"
                     puts "The main ingredient is #{Drink.all[@input.to_i - 1].strIngredient1}."
                     puts "Along with #{Drink.all[@input.to_i - 1].strIngredient2} and #{Drink.all[@input.to_i - 1].strIngredient3}."
                     puts "Here's what you're gonna do: #{Drink.all[@input.to_i - 1].strInstructions}"
                 else 
-                    puts "Invalid response, let's try again"
+                    puts "Invalid response, let's try again".colorize(:red)
                     Drink.all.clear
                     menu
                 end
@@ -72,7 +72,7 @@ class CLI
             puts "This one? (y/n)"
             user_input   
                 if @input == "y" || @input == "yes"
-                    puts "YOU GOT THIS!"
+                    puts "YOU GOT THIS!".colorize(:blue)
                     puts "-------------"
                     puts "The main ingredient is #{Drink.all.first.strIngredient1}."
                     puts "Along with #{Drink.all.first.strIngredient2} and #{Drink.all.first.strIngredient3}."
@@ -84,7 +84,7 @@ class CLI
                     Drink.all.clear
                     menu
                 else
-                    puts "Invalid response, let's try again"
+                    puts "Invalid response, let's try again".colorize(:red)
                     display_options
                     confirm_drink
                 end
@@ -107,10 +107,10 @@ class CLI
             Drink.all.clear
             menu
         elsif @input == "3" || @input == "exit"
-            puts "Have a great night!"
+            puts "Have a great night!".colorize(:purple)
             exit
         else
-            puts "Invalid response, let's try again"
+            puts "Invalid response, let's try again".colorize(:red)
             menu
         end
     end
