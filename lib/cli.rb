@@ -110,7 +110,7 @@ class CLI
             Drinks.all.clear
             menu
         elsif @input == "3" || @input == "exit"
-            puts "Have a great night!".colorize(:light_blue)
+            puts "Have a great night!".colorize(:yellow)
             exit
         else
             puts "Invalid response, let's try again".colorize(:red)
