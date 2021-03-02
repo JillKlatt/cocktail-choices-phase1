@@ -77,9 +77,9 @@ class CLI
                 if @input == "y" || @input == "yes"
                     puts "YOU GOT THIS!".colorize(:blue)
                     puts "-------------"
-                    puts "The main ingredient is #{Drink.all.first.strIngredient1}."
-                    puts "Along with #{Drink.all.first.strIngredient2} and #{Drink.all.first.strIngredient3}."
-                    puts "Here's what you're gonna do: #{Drink.all.first.strInstructions} "
+                    puts "The main ingredient is #{Drinks.all.first.strIngredient1}."
+                    puts "Along with #{Drinks.all.first.strIngredient2} and #{Drinks.all.first.strIngredient3}."
+                    puts "Here's what you're gonna do: #{Drinks.all.first.strInstructions} "
 
                 elsif
                     @input == "n" || @input == "no"
@@ -107,7 +107,7 @@ class CLI
             confirm_drink
             exit_option
         elsif @input == "2" || @input == "2 make new cocktail" || @input == "make new cocktail"
-            Drinks.all.clear
+            Drinks.clear
             menu
         elsif @input == "3" || @input == "exit"
             puts "Have a great night!".colorize(:purple)
