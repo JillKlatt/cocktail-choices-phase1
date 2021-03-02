@@ -21,7 +21,7 @@ Bug reports and inquiries are welcome at: https://github.com/JillKlatt/cocktail-
 Cocktail informtaion pulled from: https://www.thecocktaildb.com/api.php
 
 ### Code of Conduct
-Located in CODE-OF-CONDUCT
+[CODE-OF-CONDUCT](https://github.com/JillKlatt/cocktail-choices-phase1/blob/main/CODE-OF-CONDUCT.md)
 
 ### License information
-Located in LICENSE
+[LICENSE](https://github.com/JillKlatt/cocktail-choices-phase1/blob/main/LICENSE)
