@@ -17,7 +17,7 @@ class API
 
     def create_drink_objects(drink_array)
         drink_array.each do |drink_hash|
-            Drink.new(drink_hash)
+            Drinks.new(drink_hash)
         end
     end
 end
