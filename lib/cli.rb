@@ -27,10 +27,10 @@ class CLI
         formatted_input = @input.gsub(/\ /, '%')
         @drink_api = API.new("#{formatted_input}")
         if !@drink_api.get_data
-            puts "-------------------------------------------------"
-            puts       "Oh sorry buddy, can't help with that one".colorize(:red)
-            puts "That doesn't seem to be available in our database".colorize(:red)
-            puts "-------------------------------------------------"
+            puts "----------------------------------------------"
+            puts     "Oh sorry buddy, can't help with that one".colorize(:red)
+            puts "It doesn't seem to be available in our database".colorize(:red)
+            puts "-----------------------------------------------"
             Drinks.all.clear
             menu
         end
@@ -67,7 +67,7 @@ class CLI
                     puts "Here's what you're gonna do: #{Drinks.all[@input.to_i - 1].strInstructions}"
                 else 
                     puts "Invalid response, let's try again".colorize(:red)
-                    Drinks.clear
+                    Drinks.all.clear
                     menu
                 end
             end
@@ -84,7 +84,7 @@ class CLI
                 elsif
                     @input == "n" || @input == "no"
                     puts "Let's try again!"
-                    Drinks.clear
+                    Drinks.all.clear
                     menu
                 else
                     puts "Invalid response, let's try again".colorize(:red)
@@ -107,13 +107,14 @@ class CLI
             confirm_drink
             exit_option
         elsif @input == "2" || @input == "2 make new cocktail" || @input == "make new cocktail"
-            Drinks.clear
+            Drinks.all.clear
             menu
         elsif @input == "3" || @input == "exit"
-            puts "Have a great night!".colorize(:purple)
+            puts "Have a great night!".colorize(:light_blue)
             exit
         else
             puts "Invalid response, let's try again".colorize(:red)
+            Drinks.all.clear
             menu
         end
     end
