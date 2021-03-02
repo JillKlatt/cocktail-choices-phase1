@@ -1,4 +1,4 @@
-class Drink
+class Drinks
     @@all = []
 
     attr_accessor :strDrink, :strInstructions, :strIngredient1, :strIngredient2, :strIngredient3
