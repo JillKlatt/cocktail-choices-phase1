@@ -76,7 +76,7 @@ class CLI
             user_input   
                 if @input == "y" || @input == "yes"
                     puts "YOU GOT THIS!".colorize(:blue)
-                    puts "-------------"
+                    puts "------------- "
                     puts "The main ingredient is #{Drinks.all.first.strIngredient1}."
                     puts "Along with #{Drinks.all.first.strIngredient2} and #{Drinks.all.first.strIngredient3}."
                     puts "Here's what you're gonna do: #{Drinks.all.first.strInstructions} "
@@ -110,7 +110,7 @@ class CLI
             Drinks.all.clear
             menu
         elsif @input == "3" || @input == "exit"
-            puts "Have a great night!".colorize(:yellow)
+            puts "Have a great night!".colorize(:magenta)
             exit
         else
             puts "Invalid response, let's try again".colorize(:red)
