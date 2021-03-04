@@ -80,7 +80,6 @@ class CLI
                     puts "The main ingredient is #{Drinks.all.first.strIngredient1}."
                     puts "Along with #{Drinks.all.first.strIngredient2} and #{Drinks.all.first.strIngredient3}."
                     puts "Here's what you're gonna do: #{Drinks.all.first.strInstructions} "
-
                 elsif
                     @input == "n" || @input == "no"
                     puts "Let's try again!"

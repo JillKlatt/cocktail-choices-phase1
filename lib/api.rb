@@ -21,11 +21,3 @@ class API
         end
     end
 end
-
-## GOOD TRIES
-    #GET_DATA
-             #51 keys!
-        #  binding.pry
-                # cocktail_name = response_hash["drinks"][0]["strDrink"]
-        # cocktail_instruc = response_hash["drinks"][0]["strInstructions"]
-        # main_ingredient = response_hash["drinks"][0]["strIngredient1"]

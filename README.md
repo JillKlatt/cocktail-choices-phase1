@@ -10,7 +10,7 @@ Using [The Cocktail Database](https://www.thecocktaildb.com/api.php), we'll give
 ### Install instructions:
 Fork and clone this repo.
 Run bundle install
-Run ruby bin/run
+Run bin/run
 
 ### Sample demo video:
 A brief description of this program's capabilities is available [here](https://youtu.be/jFXoouM2N4o).
